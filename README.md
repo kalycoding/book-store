@@ -39,7 +39,7 @@ Als understand django auth system, permissions, authorization and roles
 <ul>
     <li>Django</li>
     <li>django-crispy-forms</li>
-    <li>Pillow</li>
+    <li>django-allauth</li>
 </ul>
   
 <h2>Note :</h2>
@@ -58,12 +58,4 @@ Als understand django auth system, permissions, authorization and roles
 
 
 
-# Screenshots : 
-<img src="Screenshots/New Tab - Google Chrome 03-12-2019 19_14_36.png" height="400" width="800">
-<img src="Screenshots/New Tab - Google Chrome 03-12-2019 19_14_51.png" height="400" width="800">
-<img src="Screenshots/New Tab - Google Chrome 03-12-2019 19_14_44.png" height="400" width="800">
-<img src="Screenshots/New Tab - Google Chrome 03-12-2019 19_15_47.png" height="400" width="800">
-<img src="Screenshots/New Tab - Google Chrome 03-12-2019 19_16_14.png" height="400" width="800">
-<img src="Screenshots/Django WebApp - Google Chrome 04-12-2019 13_41_50.png" height="400" width="800">
-<img src="Screenshots/Django WebApp - Google Chrome 03-12-2019 20_48_45.png" height="400" width="800">
 
