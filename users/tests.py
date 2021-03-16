@@ -41,4 +41,4 @@ class SignUpPageTest(TestCase):
 
     def test_signup_page(self):
         self.assertEqual(self.response.status_code, 200)
-        self.assertContains(self.response, 'Sign Up')
+        self.assertContains(self.response, 'About Page')
