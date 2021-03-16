@@ -37,8 +37,18 @@ class CustomUserTest(TestCase):
 
 class SignUpPageTest(TestCase):
     def setUp(self):
+        self.user = get_user_model()
         self.response = self.client.get('/accounts/signup/')
 
-    def test_signup_page(self):
+    """ def test_signup_page(self):
         self.assertEqual(self.response.status_code, 200)
-        self.assertContains(self.response, 'About Page')
+        self.assertContains(self.response, 'About Page') """
+
+    def test_signup_form(self):
+        user = self.user.objects.create_user(
+            username='kalycodes',
+            email='kalycodes@gmail.com',
+            password='c9mxQKJ!T'
+        )
+
+        self.assertEqual(self.user.objects.all()[0].username, user.username)
