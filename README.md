@@ -1,4 +1,4 @@
-# Django-WebApp      
+# Book Store App using Django     
 
 
 
