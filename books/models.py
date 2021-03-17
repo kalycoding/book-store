@@ -13,6 +13,7 @@ class Book(models.Model):
     title = models.CharField(max_length=250)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=6, decimal_places=2)
+    cover = models.ImageField(upload_to='covers', blank=True)
 
 
     def __str__(self):

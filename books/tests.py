@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Book
+from .models import Book, Review
 from django.contrib.auth import get_user_model
 # Create your tests here.
 
@@ -16,6 +16,11 @@ class BookTest(TestCase):
             price = 505.45
         )
 
+        self.review = Review.objects.create(
+            book = self.book,
+            author = self.user,
+            review = 'Nice book'
+        )
         list_url = '/books/'
         detail_url = '/books/1/'
         self.list_response = self.client.get(list_url)
@@ -33,3 +38,4 @@ class BookTest(TestCase):
     """ def test_book_detail_views(self):
         self.assertEqual(self.detail_response.status_code, 301)
         self.assertTemplateUsed(self.detail_response, 'book/book_detail.html') """
+
