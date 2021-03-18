@@ -1,41 +1,24 @@
 from django.test import TestCase
 from .models import Book, Review
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login
+from django.test.client import RequestFactory
+from django.urls import reverse
+from .views import BookListView, BookCreationFormView
 # Create your tests here.
 
 class BookTest(TestCase):
+    
     def setUp(self):
-        self.user = get_user_model().objects.create(
-            email='enmaza@gmail.com',
-            username='enmaza',
-            password='enmaza'
-        )
-        self.book = Book.objects.create(
-            title = 'Harry Porter',
-            author = self.user,
-            price = 505.45
-        )
-
-        self.review = Review.objects.create(
-            book = self.book,
-            author = self.user,
-            review = 'Nice book'
-        )
-        list_url = '/books/'
-        detail_url = '/books/1/'
-        self.list_response = self.client.get(list_url)
-        self.detail_response = self.client.get(detail_url)
+        self.factory = RequestFactory()
+        self.user = get_user_model().objects.create_user(username = 'muhammad', email='muhammad@gmail.com', password='c9mxQKJ!T')
+        
+    def test_book_view(self):
+        request = self.factory.get('/books/')
+        request.user = self.user
+        response = BookListView.as_view()(request)
+        self.assertEqual(response.status_code, 200)
+        #self.assertEqual(response.template_name[0], 'teams/teams_list.html')
 
     def test_book_creation(self):
-        self.assertEqual(f'{self.book.title}', 'Harry Porter')
-        self.assertEqual(f'{self.book.author}', self.user.username)
-        self.assertEqual(f'{self.book.price}', str(505.45))
-
-    def test_book_list_views(self):
-        self.assertEqual(self.list_response.status_code, 200)
-        self.assertTemplateUsed(self.list_response, 'book/books.html')
-
-    """ def test_book_detail_views(self):
-        self.assertEqual(self.detail_response.status_code, 301)
-        self.assertTemplateUsed(self.detail_response, 'book/book_detail.html') """
-
+        request = self.factory.post('/books/new_books', {'title':'JavaScript', 'price':str(1000.00)})
+        #self.assertEqual(Book.objects.last().title, "JavaScript")
